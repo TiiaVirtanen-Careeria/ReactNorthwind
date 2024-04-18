@@ -40,3 +40,15 @@
 .read-the-docs {
   color: #888;
 }
+
+.posts {
+  padding: 2em;
+  margin: auto;
+  background-color: bisque;
+  max-width: 60%;
+  border-radius: 20px;
+  border-width: 2px;
+  border-style: dotted;
+  border-color: black;
+  margin-bottom: 2%;
+}
