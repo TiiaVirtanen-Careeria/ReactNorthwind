@@ -1,9 +1,9 @@
 import './App.css'
 import React, {useState} from 'react'
 import Laskuri from './Laskuri'
-import Viesti from './Viesti'
 import Posts from './Posts'
 import CustomerList from './CustomerList'
+import UserList from './UserList'
 import Message from './Message'
 
 import Navbar from 'react-bootstrap/Navbar'
@@ -25,26 +25,45 @@ const [isPositive, setIsPositive] = useState(false)
 const huomio = () => {
   alert("Huomio!")
 }
-// Rivillä 19 yksi tapa, tässä toinen tapa {showLaskuri === true ? <Laskuri /> : <button>Näytä</button>}
+
   return (
-    <div>
-      <h1>Hello from React</h1>
+    <div className="App">
+      <Router>
+      
+        <Navbar bg="dark" variant="dark">
+          <Nav className="mr-auto">
+              <Nav.Link href='/customers'>Customers</Nav.Link>
+              <Nav.Link href='/posts'>Some higlights</Nav.Link>
+              <Nav.Link href='/users'>Users</Nav.Link>
+              <Nav.Link href='/laskuri'>Laskuri</Nav.Link>
+          </Nav>
+        </Navbar>
+                    
+        <h1>Northwind Corporation</h1>
 
-      {showMessage && <Message message={message} isPositive={isPositive} /> }
+      {showMessage && <Message message={message} isPositive={isPositive} />}
 
-      <CustomerList setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage} />
+      <Routes>
+        <Route path="/customers"
+        element={<CustomerList setMessage={setMessage} setIsPositive={setIsPositive} 
+        setShowMessage={setShowMessage} />}>
+        </Route>
 
-      {showPosts && <button onClick={() => setshowPosts(!showPosts)}>Piilota postaukset</button>}
-      {!showPosts && <button onClick={() => setshowPosts(!showPosts)}>Näytä postaukset</button>}
+        <Route path="/users"
+          element={<UserList setMessage={setMessage} setIsPositive={setIsPositive} 
+          setShowMessage={setShowMessage} />}>
+        </Route>
 
-      {showLaskuri && <button onClick={() => setshowLaskuri(!showLaskuri)}>Piilota laskuri</button>}
-      {!showLaskuri && <button onClick={() => setshowLaskuri(!showLaskuri)}>Näytä laskuri</button>}
-
-      {showLaskuri && <Laskuri huomio={huomio} />}
-      {showPosts && <Posts />}
-
-      <Viesti teksti="Tervehdys app komponentista" />
-    </div>
+        <Route path="/posts"
+        element={<Posts />}>
+        </Route>
+        
+        <Route path="/laskuri" 
+        element={<Laskuri />}>
+        </Route>
+      </Routes>
+    </Router>
+  </div>
   )
 }
 
