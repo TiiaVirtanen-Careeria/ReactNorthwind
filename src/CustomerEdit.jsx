@@ -102,7 +102,7 @@ const handleSubmit = (event) => {
                     onChange={({ target }) => setNewCity(target.value)} />
             </div>
             <div>
-            <label>Postal code: </label>
+            <label>Postal Code: </label>
                 <input type="text" value={newPostalCode}
                     onChange={({ target }) => setNewPostalCode(target.value)} />
             </div>

@@ -1,10 +1,11 @@
 import './App.css'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Laskuri from './Laskuri'
 import Posts from './Posts'
 import CustomerList from './CustomerList'
 import UserList from './UserList'
 import Message from './Message'
+import Login from './Login'
 
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
@@ -14,28 +15,43 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 const App = ()  => {
 
-  //App komponentin tila
+//App komponentin tila
 const [showLaskuri, setshowLaskuri] = useState(false)
 const [showPosts, setshowPosts] = useState(false)
 // Statet messagen näyttämistä varten
 const [showMessage, setShowMessage] = useState(false)
 const [message, setMessage] = useState('')
 const [isPositive, setIsPositive] = useState(false)
+const [loggedInUser, setLoggedInUser] = useState('')
 
-const huomio = () => {
-  alert("Huomio!")
+useEffect(() => {
+  let storedUser = localStorage.getItem("username")
+  if (storedUser !== null) {
+    setLoggedInUser(storedUser)
+  }
+},[])
+
+//Log out napin tapahtumakäsittelijä
+const logout = () => {
+  localStorage.clear()
+  setLoggedInUser('')
 }
 
   return (
     <div className="App">
+      {!loggedInUser && <Login setMessage={setMessage} setIsPositive={setIsPositive}
+      setShowMessage={setShowMessage} setLoggedInUser={setLoggedInUser}/>}
+  { loggedInUser && 
+
       <Router>
-      
         <Navbar bg="dark" variant="dark">
-          <Nav className="mr-auto">
+          <Nav className="me-auto">
+              <Nav.Link href='/'>Home</Nav.Link>
               <Nav.Link href='/customers'>Customers</Nav.Link>
               <Nav.Link href='/posts'>Some higlights</Nav.Link>
               <Nav.Link href='/users'>Users</Nav.Link>
               <Nav.Link href='/laskuri'>Laskuri</Nav.Link>
+              <button onClick={() => logout()}>Logout</button>
           </Nav>
         </Navbar>
                     
@@ -63,6 +79,7 @@ const huomio = () => {
         </Route>
       </Routes>
     </Router>
+  }
   </div>
   )
 }

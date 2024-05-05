@@ -35,7 +35,7 @@ const handleSubmit = (event) => {
         phone: newPhone,
         fax: newFax
     }
-    
+
     CustomerService.create(newCustomer)
     .then(response => {
       if (response.status === 200) {
