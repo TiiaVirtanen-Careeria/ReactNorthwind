@@ -62,8 +62,8 @@ const deleteCustomer = (customer) => {
 
         {showDetails && <div className="customerDetails">
             <h4>{customer.companyName}</h4>
-            <button onClick={() => editCustomer(customer)}>Edit</button>
-            <button onClick={() => deleteCustomer(customer)}>Delete</button>
+            <button className='nappi2' onClick={() => editCustomer(customer)}>Edit</button>
+            <button className='nappi2' onClick={() => deleteCustomer(customer)}>Delete</button>
                 <table>
                     <thead>
                         <tr>

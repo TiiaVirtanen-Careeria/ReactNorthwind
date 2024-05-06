@@ -47,8 +47,9 @@ const logout = () => {
         <Navbar bg="dark" variant="dark">
           <Nav className="me-auto">
               <Nav.Link href='/'>Home</Nav.Link>
+              <Nav.Link href='/posts'>Some highlights</Nav.Link>
               <Nav.Link href='/customers'>Customers</Nav.Link>
-              <Nav.Link href='/posts'>Some higlights</Nav.Link>
+              <Nav.Link href='/posts'>Products</Nav.Link>
               <Nav.Link href='/users'>Users</Nav.Link>
               <Nav.Link href='/laskuri'>Laskuri</Nav.Link>
               <button onClick={() => logout()}>Logout</button>
