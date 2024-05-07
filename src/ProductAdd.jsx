@@ -6,15 +6,10 @@ const ProductAdd = ({setLisäystila, setIsPositive, setMessage, setShowMessage})
 
 // Komponentin tilan määritys
 
-const [newProductId, setNewProductId] = useState('')
 const [newProductName, setNewProductName] = useState('')
-
 const [newQuantityPerUnit, setNewQuantityPerUnit] = useState('')
 const [newUnitPrice, setNewUnitPrice] = useState('')
 const [newUnitsInStock, setNewUnitsInStock] = useState('')
-
-const [newUnitsOnOrder, setNewUnitsOnOrder] = useState(0)
-const [newReorderLevel, setNewReorderLevel] = useState(0)
 const [newDiscontinued, setNewDiscontinued] = useState(false)
 
 
@@ -22,13 +17,10 @@ const [newDiscontinued, setNewDiscontinued] = useState(false)
 const handleSubmit = (event) => {
       event.preventDefault()
       var newProduct = {
-        productId: newProductId,
         productName: newProductName,
         quantityPerUnit: newQuantityPerUnit,
         unitPrice: newUnitPrice,
         unitInStock: newUnitsInStock,
-        unitsOnOrder: newUnitsOnOrder,
-        reorderLevel: newReorderLevel,
         discontinued: newDiscontinued
     }
 
@@ -79,16 +71,6 @@ const handleSubmit = (event) => {
             <div>
                 <input type="text" value={newUnitsInStock} placeholder="Unit in Stock"
                     onChange={({ target }) => setNewUnitsInStock(target.value)} />
-            </div>
-
-            <div>
-                <input type="text" value={newUnitsOnOrder} placeholder="Unit on Order"
-                    onChange={({ target }) => setNewUnitsOnOrder(target.value)} />
-            </div>
-
-            <div>
-                <input type="text" value={newReorderLevel} placeholder="Reorder level"
-                    onChange={({ target }) => setNewReorderLevel(target.value)} />
             </div>
          
          <input type='submit' value='save' />
