@@ -12,6 +12,7 @@ import Nav from 'react-bootstrap/Nav'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import ProductList from './ProductList'
 
 const App = ()  => {
 
@@ -49,7 +50,7 @@ const logout = () => {
               <Nav.Link href='/'>Home</Nav.Link>
               <Nav.Link href='/posts'>Some highlights</Nav.Link>
               <Nav.Link href='/customers'>Customers</Nav.Link>
-              <Nav.Link href='/posts'>Products</Nav.Link>
+              <Nav.Link href='/products'>Products</Nav.Link>
               <Nav.Link href='/users'>Users</Nav.Link>
               <Nav.Link href='/laskuri'>Laskuri</Nav.Link>
               <button onClick={() => logout()}>Logout</button>
@@ -63,6 +64,11 @@ const logout = () => {
       <Routes>
         <Route path="/customers"
         element={<CustomerList setMessage={setMessage} setIsPositive={setIsPositive} 
+        setShowMessage={setShowMessage} />}>
+        </Route>
+
+        <Route path="/products"
+        element={<ProductList setMessage={setMessage} setIsPositive={setIsPositive} 
         setShowMessage={setShowMessage} />}>
         </Route>
 

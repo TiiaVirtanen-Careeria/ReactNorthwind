@@ -14,11 +14,31 @@ const [newEmail, setNewEmail] = useState('')
 const [newAccesslevelId, setNewAccesslevelId] = useState(2)
 const [newUsername, setNewUsername] = useState('')
 const [newPassword, setNewPassword] = useState('')
+const [newPasswordConfirm, setNewPasswordConfirm] = useState('')
+const [passwordsMatch, setPasswordsMatch] = useState(true)
 
+
+// Tarkistetaan salasanojen vastaavuus jokaisen muutoksen yhteydessä
+const handlePasswordChange = (event) => {
+  const password = event.target.value
+    setNewPassword(password)
+
+    // Tarkistetaan, vastaavatko salasanat toisiaan
+    setPasswordsMatch(password === newPasswordConfirm);
+    }
+
+const handleConfirmPasswordChange = (event) => {
+  const confirmPassword = event.target.value
+    setNewPasswordConfirm(confirmPassword)
+
+    // Tarkistetaan, vastaavatko salasanat toisiaan
+    setPasswordsMatch(confirmPassword === newPassword)
+    }
 
 // onSubmit tapahtumankäsittelijä funktio
 const handleSubmit = (event) => {
       event.preventDefault()
+
       var newUser = {
         firstName: newFirstname,
         lastName: newLastname,
@@ -84,9 +104,13 @@ const handleSubmit = (event) => {
             </div>
             <div>
                 <input type="password" value={newPassword} placeholder="Password"
-                    onChange={({ target }) => setNewPassword(target.value)} />
+                    onChange={ handlePasswordChange } />
             </div>
-            
+            <div>
+                <input type="password" value={newPasswordConfirm} placeholder="Confirm Password"
+                    onChange={ handleConfirmPasswordChange } />
+            </div>
+            {!passwordsMatch && <p>Passwords do not match</p>}
          <input type='submit' value='save' />
          <input type='button' value='back' onClick={() => setLisäystila(false)} />
        </form>

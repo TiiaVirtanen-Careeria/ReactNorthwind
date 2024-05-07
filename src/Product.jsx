@@ -1,21 +1,21 @@
 import './App.css'
 import React, {useState} from 'react'
-import CustomerService from './services/Customer'
+import ProductService from './services/Product'
 
-// props on nimeltään customer
-const Customer = ({customer, editCustomer, setIsPositive, setMessage, setShowMessage, reload, reloadNow})  => {
+// props on nimeltään product
+const Product = ({product, editProduct, setIsPositive, setMessage, setShowMessage, reload, reloadNow})  => {
 
     // Komponentin tilan määritys
 const [showDetails, setShowDetails] = useState(false)
 
-const deleteCustomer = (customer) => {
-    let vastaus = window.confirm(`Remove Customer ${customer.companyName}`)
+const deleteProduct = (product) => {
+    let vastaus = window.confirm(`Remove Product ${product.productName}`)
 
     if (vastaus === true) {
-    CustomerService.remove(customer.customerId)
+    ProductService.remove(product.productId)
     .then(res => {
         if (res.status === 200) {
-        setMessage(`Successfully removed customer ${customer.companyName}`)
+        setMessage(`Successfully removed product ${product.productName}`)
         setIsPositive(true)
         setShowMessage(true)
         window.scrollBy(0, -10000) // Scrollataan ylös jotta nähdään alert :)
@@ -58,29 +58,29 @@ const deleteCustomer = (customer) => {
 
   return (
     <div className='customerDiv'>
-        <h4><nobr style={{ cursor: 'pointer' }} onClick={() => setShowDetails(!showDetails)}>{customer.companyName}</nobr></h4>
+        <h4><nobr style={{ cursor: 'pointer' }} onClick={() => setShowDetails(!showDetails)}>{product.productName}</nobr></h4>
 
         {showDetails && <div className="customerDetails">
-            <h4>{customer.companyName}</h4>
-            <button className='nappi2' onClick={() => editCustomer(customer)}>Edit</button>
-            <button className='nappi2' onClick={() => deleteCustomer(customer)}>Delete</button>
+            <h4>{product.productName}</h4>
+            <button className='nappi2' onClick={() => editProduct(product)}>Edit</button>
+            <button className='nappi2' onClick={() => deleteProduct(product)}>Delete</button>
                 <table>
                     <thead>
                         <tr>
-                            <th>Contact person</th>
-                            <th>Phone</th>
-                            <th>Address</th>
-                            <th>City</th>
-                            <th>Country</th>
+                            <th>Product name</th>
+                            <th>Category Id</th>
+                            <th>Quantity per Unit</th>
+                            <th>Unit Price</th>
+                            <th>Units in Stock</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{customer.contactName}</td>
-                            <td>{customer.phone}</td>
-                            <td>{customer.address}</td>
-                            <td>{customer.city}</td>
-                            <td>{customer.country}</td>
+                            <td>{product.productName}</td>
+                            <td>{product.categoryId}</td>
+                            <td>{product.quantityPerUnit}</td>
+                            <td>{product.unitPrice}</td>
+                            <td>{product.unitsInStock}</td>
                         </tr>
                     </tbody>
                 </table></div>}
@@ -88,4 +88,4 @@ const deleteCustomer = (customer) => {
   )
 }
 
-export default Customer
+export default Product
