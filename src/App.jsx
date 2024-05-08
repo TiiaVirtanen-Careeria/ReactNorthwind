@@ -42,7 +42,7 @@ const logout = () => {
     <div className="App">
       {!loggedInUser && <Login setMessage={setMessage} setIsPositive={setIsPositive}
       setShowMessage={setShowMessage} setLoggedInUser={setLoggedInUser}/>}
-  { loggedInUser && 
+      { loggedInUser && 
 
       <Router>
         <Navbar bg="dark" variant="dark">
@@ -74,7 +74,7 @@ const logout = () => {
 
         <Route path="/users"
           element={<UserList setMessage={setMessage} setIsPositive={setIsPositive} 
-          setShowMessage={setShowMessage} />}>
+          setShowMessage={setShowMessage} loggedInUser={loggedInUser} />}>
         </Route>
 
         <Route path="/posts"

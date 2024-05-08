@@ -30,7 +30,10 @@ const handleSubmit = (event) => {
         localStorage.setItem("token", response.data.token)
 
         // Asetetaan app komponentissa olevaan stateen
-        setLoggedInUser(response.data.userName) 
+        setLoggedInUser({
+          userneme: response.data.userName,
+          accesslevelId: response.data.accesslevelId})
+
 
         setMessage(`Logged in as: ${userForAuth.userName}`)
         setIsPositive(true)
