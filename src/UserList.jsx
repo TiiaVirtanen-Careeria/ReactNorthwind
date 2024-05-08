@@ -143,8 +143,11 @@ if (localStorage.getItem("accesslevelId") === "1") {
     )
 } else {
     return (
-    <p>Ei käyttöoikeutta!<br></br>
-    <button className='nappi2' onClick={HomeButton}>to the front page</button></p>)
+    <div>
+        <p id='noAccess'>No access!<br></br></p>
+        <button className='nappi2' onClick={HomeButton}>to the front page</button>
+    </div>
+    )
 }
 
 }
