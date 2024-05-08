@@ -3,6 +3,8 @@ import React, {useState, useEffect} from 'react'
 import Laskuri from './Laskuri'
 import Posts from './Posts'
 import CustomerList from './CustomerList'
+import EmployeeList from './EmployeeList'
+import ProductList from './ProductList'
 import UserList from './UserList'
 import Message from './Message'
 import Login from './Login'
@@ -12,7 +14,6 @@ import Nav from 'react-bootstrap/Nav'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import ProductList from './ProductList'
 
 const App = ()  => {
 
@@ -50,6 +51,7 @@ const logout = () => {
               <Nav.Link href='/'>Home</Nav.Link>
               <Nav.Link href='/posts'>Some highlights</Nav.Link>
               <Nav.Link href='/customers'>Customers</Nav.Link>
+              <Nav.Link href='/employees'>Employees</Nav.Link>
               <Nav.Link href='/products'>Products</Nav.Link>
               <Nav.Link href='/users'>Users</Nav.Link>
               <Nav.Link href='/laskuri'>Laskuri</Nav.Link>
@@ -64,6 +66,11 @@ const logout = () => {
       <Routes>
         <Route path="/customers"
         element={<CustomerList setMessage={setMessage} setIsPositive={setIsPositive} 
+        setShowMessage={setShowMessage} />}>
+        </Route>
+
+        <Route path="/employees"
+        element={<EmployeeList setMessage={setMessage} setIsPositive={setIsPositive} 
         setShowMessage={setShowMessage} />}>
         </Route>
 

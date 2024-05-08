@@ -4,7 +4,7 @@ import UserService from './services/User'
 import UserAdd from './UserAdd'
 import UserEdit from './UserEdit'
 
-const UserList = ({setIsPositive, setShowMessage, setMessage, loggedInUser})  => {
+const UserList = ({setIsPositive, setShowMessage, setMessage})  => {
 
     // Komponentin tilan määritys
 const [users, setUsers] = useState([])
