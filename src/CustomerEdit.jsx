@@ -72,53 +72,71 @@ const handleSubmit = (event) => {
                 <input type="text" value={newCustomerId} disabled />
             </div>
             <div>
-                <label>Company name: </label>
+              <label>Company name:</label>
+            </div>
+            <div>
                 <input type="text" value={newCompanyName}
                     onChange={({ target }) => setNewCompanyName(target.value)} required />
             </div>
             <div>
-              <label>Contact name: </label>
+              <label>Contact name:</label>
+            </div>
+            <div>
                 <input type="text" value={newContactName}
                     onChange={({ target }) => setNewContactName(target.value)} />
             </div>
             <div>
-                <label>Contact title: </label>
+              <label>Contact title:</label>
+            </div>
+            <div>
                 <input type="text" value={newContactTitle}
                     onChange={({ target }) => setNewContactTitle(target.value)} />
             </div>
             <div>
-                <label>Country: </label>
+             <label>Country:</label>
+            </div>
+            <div>
                 <input type="text" value={newCountry}
                     onChange={({ target }) => setNewCountry(target.value)} />
             </div>
             <div>
-                <label>Address: </label>
+            <label>Address:</label>
+            </div>
+            <div>
                 <input type="text" value={newAddress}
                     onChange={({ target }) => setNewAddress(target.value)} />
             </div>
             <div>
-            <label>City: </label>
+              <label>City:</label>
+            </div>
+            <div>
                 <input type="text" value={newCity}
                     onChange={({ target }) => setNewCity(target.value)} />
             </div>
             <div>
-            <label>Postal Code: </label>
+              <label>Postal Code:</label>
+            </div>
+            <div>
                 <input type="text" value={newPostalCode}
                     onChange={({ target }) => setNewPostalCode(target.value)} />
             </div>
             <div>
-            <label>Phone: </label>
+              <label>Phone:</label>
+            </div>
+            <div>
                 <input type="text" value={newPhone}
                     onChange={({ target }) => setNewPhone(target.value)} />
             </div>
             <div>
-            <label>Fax: </label>
+            <label>Fax:</label>
+            </div>
+            <div>
                 <input type="text" value={newFax}
                     onChange={({ target }) => setNewFax(target.value)} />
             </div>
          
-         <input type='submit' value='save' />
-         <input type='button' value='back' onClick={() => setMuokkaustila(false)} />
+         <input style={{ margin: '8px' }} type='submit' value='save' />
+         <input style={{ margin: '8px' }} type='button' value='back' onClick={() => setMuokkaustila(false)} />
        </form>
 
     </div>

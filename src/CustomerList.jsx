@@ -5,7 +5,7 @@ import Customer from './Customer'
 import CustomerAdd from './CustomerAdd'
 import CustomerEdit from './CustomerEdit'
 
-const CustomerList = ({setIsPositive, setShowMessage, setMessage})  => {
+const CustomerList = ({setIsPositive, setShowMessage, setMessage, storedUser })  => {
 
     // Komponentin tilan määritys
 const [customers, setCustomers] = useState([])
@@ -39,43 +39,56 @@ const editCustomer = (customer) => {
     setMuokkaustila(true)
 }
 
-  return (
-    <>
-        <h2><nobr style={{ cursor: 'pointer' }}
-                onClick={() => setShowCustomers(!showCustomers)}>Customers</nobr>
+const HomeButton = () => {
+    window.location.href = '/'
+}
 
-                {!lisäystila && <button className="nappi" onClick={() => setLisäystila(true)}>Add new</button>}</h2>
-
-                {!lisäystila && !muokkausstila &&
-                <input placeholder="Search by company name" value={search} onChange={handleSearchInputChange} />
-                }
-
-                {lisäystila && <CustomerAdd setLisäystila={setLisäystila}
-                setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
-                />}
-
-                {muokkausstila && <CustomerEdit setMuokkaustila={setMuokkaustila}
-                setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
-                muokattavaCustomer={muokattavaCustomer}
-                />}
-
-
-        {
-            !lisäystila && !muokkausstila && showCustomers && customers && customers.map(c => 
-                {
-                    const lowerCaseName = c.companyName.toLowerCase()
-                if (lowerCaseName.indexOf(search) > -1) {
-                    return (
-                        <Customer key={c.customerId} customer={c} reloadNow={reloadNow} reload={reload}
-                        setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
-                        editCustomer={editCustomer} />
-                    )
-                }
-                }
-            )
-        }
-    </>
-  )
+if (localStorage.getItem('username') !== null) {
+	return (
+        <>
+            <h2><nobr style={{ cursor: 'pointer' }}
+                    onClick={() => setShowCustomers(!showCustomers)}>Customers</nobr>
+    
+                    {!lisäystila && <button className="nappi" onClick={() => setLisäystila(true)}>Add new</button>}</h2>
+    
+                    {!lisäystila && !muokkausstila &&
+                    <input placeholder="Search by company name" value={search} onChange={handleSearchInputChange} />
+                    }
+    
+                    {lisäystila && <CustomerAdd setLisäystila={setLisäystila}
+                    setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
+                    />}
+    
+                    {muokkausstila && <CustomerEdit setMuokkaustila={setMuokkaustila}
+                    setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
+                    muokattavaCustomer={muokattavaCustomer}
+                    />}
+    
+    
+            {
+                !lisäystila && !muokkausstila && showCustomers && customers && customers.map(c => 
+                    {
+                        const lowerCaseName = c.companyName.toLowerCase()
+                    if (lowerCaseName.indexOf(search) > -1) {
+                        return (
+                            <Customer key={c.customerId} customer={c} reloadNow={reloadNow} reload={reload}
+                            setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
+                            editCustomer={editCustomer} />
+                        )
+                    }
+                    }
+                )
+            }
+        </>
+      )
+} else {
+    return (
+    <div>
+        <p id='noAccess'>No access!<br></br></p>
+        <button className='nappi2' onClick={HomeButton}>to the front page</button>
+    </div>
+    )
+}
 }
 
 export default CustomerList

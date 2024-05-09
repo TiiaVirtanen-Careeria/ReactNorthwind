@@ -64,20 +64,19 @@ const handleSubmit = (event) => {
 
   return (
     <div id="loginWindow">
-       <h2>Login</h2>
 
-       <form onSubmit={handleSubmit}>
-            <div>
+       <form onSubmit={handleSubmit}  style={{ display: 'flex', flexDirection: 'row' }}>
+            <div style={{ marginRight: '10px',  marginLeft: '10px'}}>
                 <input type="text" value={userName} placeholder="Username"
                     onChange={({ target }) => setUsername(target.value)} />
             </div>
-            <div>
+            <div style={{ marginRight: '10px' }}>
                 <input type="password" value={password} placeholder="Password"
                     onChange={({ target }) => setPassword(target.value)} />
             </div>
             
-         <input type='submit' value='login' />
-         <input type='button' value='empty' onClick={() => emptyFields()} />
+         <input style={{ marginRight: '10px' }} type='submit' value='login' />
+         <input style={{ marginRight: '10px' }} type='button' value='empty' onClick={() => emptyFields()} />
        </form>
 
     </div>

@@ -5,7 +5,7 @@ import Product from './Product'
 import ProductAdd from './ProductAdd'
 import ProductEdit from './ProductEdit'
 
-const ProductList = ({setIsPositive, setShowMessage, setMessage})  => {
+const ProductList = ({setIsPositive, setShowMessage, setMessage, storedUser })  => {
 
     // Komponentin tilan määritys
 const [products, setProducts] = useState([])
@@ -36,43 +36,56 @@ const editProduct = (product) => {
     setMuokkaustila(true)
 }
 
-  return (
-    <>
-        <h2><nobr style={{ cursor: 'pointer' }}
-                onClick={() => setShowProducts(!showProducts)}>Products</nobr>
+const HomeButton = () => {
+    window.location.href = '/'
+}
 
-                {!lisäystila && <button className="nappi" onClick={() => setLisäystila(true)}>Add new</button>}</h2>
-
-                {!lisäystila && !muokkausstila &&
-                <input placeholder="Search by product name" value={search} onChange={handleSearchInputChange} />
-                }
-
-                {lisäystila && <ProductAdd setLisäystila={setLisäystila}
-                setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
-                />}
-
-                {muokkausstila && <ProductEdit setMuokkaustila={setMuokkaustila}
-                setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
-                muokattavaProduct={muokattavaProduct}
-                />}
-
-
-        {
-            !lisäystila && !muokkausstila && showProducts && products && products.map(p => 
-                {
-                    const lowerCaseName = p.productName.toLowerCase()
-                if (lowerCaseName.indexOf(search) > -1) {
-                    return (
-                        <Product key={p.productId} product={p} reloadNow={reloadNow} reload={reload}
-                        setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
-                        editProduct={editProduct} />
-                    )
-                }
-                }
-            )
-        }
-    </>
-  )
+if (localStorage.getItem('username') !== null) {
+	return (
+        <>
+            <h2><nobr style={{ cursor: 'pointer' }}
+                    onClick={() => setShowProducts(!showProducts)}>Products</nobr>
+    
+                    {!lisäystila && <button className="nappi" onClick={() => setLisäystila(true)}>Add new</button>}</h2>
+    
+                    {!lisäystila && !muokkausstila &&
+                    <input placeholder="Search by product name" value={search} onChange={handleSearchInputChange} />
+                    }
+    
+                    {lisäystila && <ProductAdd setLisäystila={setLisäystila}
+                    setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
+                    />}
+    
+                    {muokkausstila && <ProductEdit setMuokkaustila={setMuokkaustila}
+                    setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
+                    muokattavaProduct={muokattavaProduct}
+                    />}
+    
+    
+            {
+                !lisäystila && !muokkausstila && showProducts && products && products.map(p => 
+                    {
+                        const lowerCaseName = p.productName.toLowerCase()
+                    if (lowerCaseName.indexOf(search) > -1) {
+                        return (
+                            <Product key={p.productId} product={p} reloadNow={reloadNow} reload={reload}
+                            setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
+                            editProduct={editProduct} />
+                        )
+                    }
+                    }
+                )
+            }
+        </>
+      )
+} else {
+    return (
+    <div>
+        <p id='noAccess'>No access!<br></br></p>
+        <button className='nappi2' onClick={HomeButton}>to the front page</button>
+    </div>
+    )
+}
 }
 
 export default ProductList

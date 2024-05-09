@@ -41,9 +41,7 @@ const logout = () => {
 
   return (
     <div className="App">
-      {!loggedInUser && <Login setMessage={setMessage} setIsPositive={setIsPositive}
-      setShowMessage={setShowMessage} setLoggedInUser={setLoggedInUser}/>}
-      { loggedInUser && 
+      
 
       <Router>
         <Navbar bg="dark" variant="dark">
@@ -55,8 +53,10 @@ const logout = () => {
               <Nav.Link href='/products'>Products</Nav.Link>
               <Nav.Link href='/users'>Users</Nav.Link>
               <Nav.Link href='/laskuri'>Laskuri</Nav.Link>
-              <button onClick={() => logout()}>Logout</button>
+              {loggedInUser && <button style={{ marginRight: '10px' }} onClick={() => logout()}>Logout</button>}
           </Nav>
+          {!loggedInUser && <Login setMessage={setMessage} setIsPositive={setIsPositive}
+      setShowMessage={setShowMessage} setLoggedInUser={setLoggedInUser}/>}
         </Navbar>
                     
         <h1>Northwind Corporation</h1>
@@ -93,7 +93,7 @@ const logout = () => {
         </Route>
       </Routes>
     </Router>
-  }
+  
   </div>
   )
 }

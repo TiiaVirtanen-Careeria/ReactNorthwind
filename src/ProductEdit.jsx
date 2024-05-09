@@ -62,28 +62,36 @@ const handleSubmit = (event) => {
                 <input type="text" value={newProductId} disabled />
             </div>
             <div>
-                <label>Product name: </label>
+              <label>Product name:</label>
+            </div>
+            <div>
                 <input type="text" value={newProductName}
                     onChange={({ target }) => setNewProductName(target.value)} required />
             </div>
             <div>
-              <label>Quantity per Unit: </label>
+              <label>Quantity per Unit:</label>
+            </div>
+            <div>
                 <input type="text" value={newQuantityPerUnit}
                     onChange={({ target }) => setNewQuantityPerUnit(target.value)} />
             </div>
             <div>
-                <label>Unit Price: </label>
+              <label>Unit Price:</label>
+            </div>
+            <div>
                 <input type="text" value={newUnitPrice}
                     onChange={({ target }) => setNewUnitPrice(target.value)} />
             </div>
             <div>
-                <label>Unit in Stock: </label>
+              <label>Unit in Stock:</label>
+            </div>
+            <div>
                 <input type="text" value={newUnitsInStock}
                     onChange={({ target }) => setNewUnitsInStock(target.value)} />
             </div>
          
-         <input type='submit' value='save' />
-         <input type='button' value='back' onClick={() => setMuokkaustila(false)} />
+         <input style={{ margin: '8px' }} type='submit' value='save' />
+         <input style={{ margin: '8px' }} type='button' value='back' onClick={() => setMuokkaustila(false)} />
        </form>
 
     </div>

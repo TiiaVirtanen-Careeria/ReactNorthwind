@@ -111,8 +111,8 @@ const handleSubmit = (event) => {
                     onChange={ handleConfirmPasswordChange } />
             </div>
             {!passwordsMatch && <p>Passwords do not match</p>}
-         <input type='submit' value='save' />
-         <input type='button' value='back' onClick={() => setLisäystila(false)} />
+         <input style={{ margin: '8px' }} type='submit' value='save' />
+         <input style={{ margin: '8px' }} type='button' value='back' onClick={() => setLisäystila(false)} />
        </form>
 
     </div>

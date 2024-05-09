@@ -69,48 +69,64 @@ const handleSubmit = (event) => {
                 <input type="text" value={newEmployeeId} disabled />
             </div>
             <div>
-                <label>Firstname: </label>
+              <label>Firstname:</label>
+            </div>
+            <div>
                 <input type="text" value={newFirstName}
                     onChange={({ target }) => setNewFirstName(target.value)} required />
             </div>
             <div>
-              <label>Lastname: </label>
+              <label>Lastname:</label>
+            </div>
+            <div>
                 <input type="text" value={newLastName}
                     onChange={({ target }) => setNewLastName(target.value)} />
             </div>
             <div>
-                <label>Title: </label>
+              <label>Title:</label>
+            </div>
+            <div>
                 <input type="text" value={newTitle}
                     onChange={({ target }) => setNewTitle(target.value)} />
             </div>
             <div>
-                <label>HireDate: </label>
+              <label>HireDate:</label>
+            </div>
+            <div>
                 <input type="date" value={newHireDate}
                     onChange={({ target }) => setNewHireDate(target.value)} />
             </div>
             <div>
-                <label>Postal code: </label>
+              <label>Postal code:</label>
+            </div>
+            <div>
                 <input type="text" value={newPostalCode}
                     onChange={({ target }) => setNewPostalCode(target.value)} />
             </div>
             <div>
-                <label>City: </label>
+              <label>City:</label>
+            </div>
+            <div>
                 <input type="text" value={newCity}
                     onChange={({ target }) => setNewCity(target.value)} />
             </div>
             <div>
-                <label>Country: </label>
+              <label>Country:</label>
+            </div>
+            <div>
                 <input type="text" value={newCountry}
                     onChange={({ target }) => setNewCountry(target.value)} />
             </div>
             <div>
-                <label>Home phone: </label>
+              <label>Home phone:</label>
+            </div>
+            <div>
                 <input type="text" value={newHomePhone}
                     onChange={({ target }) => setNewHomePhone(target.value)} />
             </div>
          
-         <input type='submit' value='save' />
-         <input type='button' value='back' onClick={() => setMuokkaustila(false)} />
+         <input style={{ margin: '8px' }} type='submit' value='save' />
+         <input style={{ margin: '8px' }} type='button' value='back' onClick={() => setMuokkaustila(false)} />
        </form>
 
     </div>

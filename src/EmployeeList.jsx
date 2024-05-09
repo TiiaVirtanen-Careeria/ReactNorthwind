@@ -5,7 +5,7 @@ import Employee from './Employee'
 import EmployeeAdd from './EmployeeAdd'
 import EmployeeEdit from './EmployeeEdit'
 
-const EmployeeList = ({setIsPositive, setShowMessage, setMessage})  => {
+const EmployeeList = ({setIsPositive, setShowMessage, setMessage, storedUser })  => {
 
     // Komponentin tilan määritys
 const [employees, setEmployees] = useState([])
@@ -36,43 +36,56 @@ const editEmployee = (employee) => {
     setMuokkaustila(true)
 }
 
-  return (
-    <>
-        <h2><nobr style={{ cursor: 'pointer' }}
-                onClick={() => setShowEmployees(!showEmployees)}>Employees</nobr>
+const HomeButton = () => {
+    window.location.href = '/'
+}
 
-                {!lisäystila && <button className="nappi" onClick={() => setLisäystila(true)}>Add new</button>}</h2>
-
-                {!lisäystila && !muokkausstila &&
-                <input placeholder="Search by last name" value={search} onChange={handleSearchInputChange} />
-                }
-
-                {lisäystila && <EmployeeAdd setLisäystila={setLisäystila}
-                setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
-                />}
-
-                {muokkausstila && <EmployeeEdit setMuokkaustila={setMuokkaustila}
-                setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
-                muokattavaEmployee={muokattavaEmployee}
-                />}
-
-
-        {
-            !lisäystila && !muokkausstila && showEmployees && employees && employees.map(e => 
-                {
-                    const lowerCaseName = e.lastName.toLowerCase()
-                if (lowerCaseName.indexOf(search) > -1) {
-                    return (
-                        <Employee key={e.employeeId} employee={e} reloadNow={reloadNow} reload={reload}
-                        setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
-                        editEmployee={editEmployee} />
-                    )
-                }
-                }
-            )
-        }
-    </>
-  )
+if (localStorage.getItem('username') !== null) {
+	return (
+        <>
+            <h2><nobr style={{ cursor: 'pointer' }}
+                    onClick={() => setShowEmployees(!showEmployees)}>Employees</nobr>
+    
+                    {!lisäystila && <button className="nappi" onClick={() => setLisäystila(true)}>Add new</button>}</h2>
+    
+                    {!lisäystila && !muokkausstila &&
+                    <input placeholder="Search by last name" value={search} onChange={handleSearchInputChange} />
+                    }
+    
+                    {lisäystila && <EmployeeAdd setLisäystila={setLisäystila}
+                    setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
+                    />}
+    
+                    {muokkausstila && <EmployeeEdit setMuokkaustila={setMuokkaustila}
+                    setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
+                    muokattavaEmployee={muokattavaEmployee}
+                    />}
+    
+    
+            {
+                !lisäystila && !muokkausstila && showEmployees && employees && employees.map(e => 
+                    {
+                        const lowerCaseName = e.lastName.toLowerCase()
+                    if (lowerCaseName.indexOf(search) > -1) {
+                        return (
+                            <Employee key={e.employeeId} employee={e} reloadNow={reloadNow} reload={reload}
+                            setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
+                            editEmployee={editEmployee} />
+                        )
+                    }
+                    }
+                )
+            }
+        </>
+      )
+} else {
+    return (
+    <div>
+        <p id='noAccess'>No access!<br></br></p>
+        <button className='nappi2' onClick={HomeButton}>to the front page</button>
+    </div>
+    )
+}
 }
 
 export default EmployeeList

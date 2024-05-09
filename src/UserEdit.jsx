@@ -66,38 +66,50 @@ const handleSubmit = (event) => {
                 <input type="text" value={userId} disabled />
             </div>
             <div>
-                <label>Firstname: </label>
+              <label>Firstname:</label>
+            </div>
+            <div>
                 <input type="text" value={firstName}
                     onChange={({ target }) => setFirstName(target.value)} required />
             </div>
             <div>
-              <label>Lastname: </label>
+              <label>Lastname:</label>
+            </div>
+            <div>
                 <input type="text" value={lastName}
                     onChange={({ target }) => setLastName(target.value)} />
             </div>
             <div>
-                <label>Email: </label>
+              <label>Email:</label>
+            </div>
+            <div>
                 <input type="text" value={email}
                     onChange={({ target }) => setEmail(target.value)} />
             </div>
             <div>
-                <label>Username: </label>
+              <label>Username:</label>
+            </div>
+            <div>
                 <input type="text" value={userName}
                     onChange={({ target }) => setUserName(target.value)} />
             </div>
             <div>
-                <label>Password: </label>
+              <label>Password:</label>
+            </div>
+            <div>
                 <input type="text" value={password}
                     onChange={({ target }) => setPassword(target.value)} />
             </div>
             <div>
-            <label>AccesslevelId: </label>
+              <label>AccesslevelId:</label>
+            </div>
+            <div>
                 <input type="text" value={accesslevelId}
                     onChange={({ target }) => setAccesslevelId(target.value)} />
             </div>
          
-         <input type='submit' value='save' />
-         <input type='button' value='back' onClick={() => setMuokkaustila(false)} />
+         <input style={{ margin: '8px' }} type='submit' value='save' />
+         <input style={{ margin: '8px' }} type='button' value='back' onClick={() => setMuokkaustila(false)} />
        </form>
 
     </div>
