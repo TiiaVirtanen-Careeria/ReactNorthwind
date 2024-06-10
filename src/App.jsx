@@ -52,7 +52,7 @@ const logout = () => {
               <Nav.Link href='/employees'>Employees</Nav.Link>
               <Nav.Link href='/products'>Products</Nav.Link>
               <Nav.Link href='/users'>Users</Nav.Link>
-              <Nav.Link href='/laskuri'>Laskuri</Nav.Link>
+              <Nav.Link id="Laskuri" href='/laskuri'>Laskuri</Nav.Link>
               {loggedInUser && <button style={{ marginRight: '10px' }} onClick={() => logout()}>Logout</button>}
           </Nav>
           {!loggedInUser && <Login setMessage={setMessage} setIsPositive={setIsPositive}

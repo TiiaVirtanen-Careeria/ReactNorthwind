@@ -1,8 +1,8 @@
-import './App.css'
+//import '/App.css'
 
 const Message = ({message, isPositive})  => {
 
-let tyyli = '';
+let tyyli = ' ';
 
     if (isPositive === true) {
         tyyli = "pos"

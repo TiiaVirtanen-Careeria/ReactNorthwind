@@ -46,7 +46,7 @@ const HomeButton = () => {
 if (localStorage.getItem('username') !== null) {
 	return (
         <>
-            <h2><nobr style={{ cursor: 'pointer' }}
+            <h2><nobr id="customer" style={{ cursor: 'pointer' }}
                     onClick={() => setShowCustomers(!showCustomers)}>Customers</nobr>
     
                     {!lisäystila && <button className="nappi" onClick={() => setLisäystila(true)}>Add new</button>}</h2>

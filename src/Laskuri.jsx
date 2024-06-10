@@ -11,9 +11,9 @@ const [luku, setLuku] = useState(0)
   return (
     <>
         <h3>{luku}</h3>
-        <button onClick={() => setLuku(luku + 1)}>+</button> 
-        <button onClick={() => setLuku(luku - 1)}>-</button> 
-        <button onClick={() => setLuku(0)}>Reset</button>
+        <button id="Plu" onClick={() => setLuku(luku + 1)}>+</button> 
+        <button id="Mii" onClick={() => setLuku(luku - 1)}>-</button> 
+        <button id="Reset" onClick={() => setLuku(0)}>Reset</button>
     </>
   )
 }
